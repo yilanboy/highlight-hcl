@@ -8,7 +8,7 @@ You can use this library to highlight Terraform, OpenTofu, and Packer.
 Using npm to download the library.
 
 ```bash
-npm install highlight.js hightlight-hcl
+npm install highlight.js highlight-hcl
 ```
 
 ## Importing the Library
