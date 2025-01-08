@@ -1,4 +1,4 @@
-import type {HLJSApi} from 'highlight.js';
+import type { HLJSApi } from 'highlight.js';
 
 export default function (hljs: HLJSApi) {
     // map 'resource' in 'resource "aws_vpc" "main" {'
@@ -8,50 +8,50 @@ export default function (hljs: HLJSApi) {
     // and more...
     const KEYWORDS = {
         scope: 'keyword',
-        match: /\b\w+\b(?=(?:\s+".+")*\s*\{)/,
+        match: /\b(?<match>\w+)\b(?=(?:\s+".+")*\s*\{)/,
     };
 
     // the ':' in Conditional Expressions
     // condition ? true_val : false_val
     const QUESTION_MARK_IN_EXPRESSION = {
         scope: 'keyword',
-        match: /\?/,
+        match: /(?<match>\?)/,
     };
 
     // the ':' in Conditional Expressions
     // condition ? true_val : false_val
     const COLON_IN_EXPRESSION = {
         scope: 'keyword',
-        match: /:/,
+        match: /(?<match>:)/,
     };
 
     const ARROW_EXPRESSION = {
         scope: 'keyword',
-        match: /=>/,
+        match: /(?<match>=>)/,
     };
 
     const OPERATORS = {
         scope: 'operator',
-        match: /[><+\-*\/]|==|<=|>=|!=/,
+        match: /(?<match>[><+\-*\/]|==|<=|>=|!=)/,
     };
 
     // 1 or 1.2
     const NUMBERS = {
         scope: 'number',
-        match: /\b\d+(\.\d+)?\b/,
+        match: /\b(?<match>\d+(\.\d+)?)\b/,
     };
 
     // "string"
     // "string and ${variable}"
     const STRINGS = {
         scope: 'string',
-        begin: /"/,
-        end: /"/,
+        begin: /(?<begin>")/,
+        end: /(?<end>")/,
         contains: [
             {
                 scope: 'subst',
-                begin: /\$\{/,
-                end: /}/,
+                begin: /(?<begin>\$\{)/,
+                end: /(?<end>})/,
             },
         ],
     };
@@ -59,19 +59,19 @@ export default function (hljs: HLJSApi) {
     // somethingLikeThis(
     const FUNCTION = {
         scope: 'title.function',
-        match: /[a-zA-Z0-9_]+(?=\()/,
+        match: /(?<match>[a-zA-Z0-9_]+)(?=\()/,
     };
 
     // somethingLikeThis =
     // exclude the case like 'bucket =' in 'aws_s3_bucket.main.bucket == "something"'
     const ATTRIBUTE = {
         scope: 'attr',
-        match: /(?<!\S)[\w\-]+(?=\s*=[^=>])/,
+        match: /(?<!\S)(?<match>[\w\-]+)(?=\s*=[^=>])/,
     };
 
     const PUNCTUATIONS = {
         scope: 'punctuation',
-        match: /[{}\[\](),]/,
+        match: /(?<match>[{}\[\](),])/,
     };
 
     return {

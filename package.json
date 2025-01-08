@@ -1,6 +1,6 @@
 {
   "name": "highlight-hcl",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A highlight.js plugin for hashicorp configuration language",
   "type": "module",
   "main": "dist/index.js",
