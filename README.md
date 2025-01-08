@@ -36,7 +36,7 @@ Load all languages of highlight.js, please note that this generates a large file
 import hljs from 'highlight.js';
 import hcl from 'highlight-hcl';
 
-hljs.registerLanguage('blade', hcl);
+hljs.registerLanguage('hcl', hcl);
 ```
 
 More information about importing highlight.js library, please refer
