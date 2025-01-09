@@ -3,6 +3,8 @@
 Highlight HashiCorp configuration language (HCL) with [highlight.js](https://highlightjs.org/).
 You can use this library to highlight Terraform, OpenTofu, and Packer.
 
+You can see the highlight results [here](https://yilanboy.github.io/highlight-hcl/public/).
+
 ## Installation
 
 Using npm to download the library.
