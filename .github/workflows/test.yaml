@@ -24,8 +24,9 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      # https://github.com/vitejs/vite/discussions/15532
       - name: Install dependencies
-        run: npm install
+        run: npm install && npm install @rollup/rollup-linux-x64-gnu --save-optional
 
       - name: Run tests
         run: npm test
