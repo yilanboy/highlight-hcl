@@ -68,7 +68,7 @@ resource "aws_instance" "app_server" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "ExampleAppServerInstance"
+    Name = "${var.instance_name} - PoC"
   }
 }</code>
     </pre>
@@ -204,7 +204,7 @@ build {
 
 <script type="module">
     import hljs from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/es/highlight.min.js';
-    import hcl from 'https://cdn.jsdelivr.net/npm/highlight-hcl@0.0.4/+esm'
+    import hcl from 'https://cdn.jsdelivr.net/npm/highlight-hcl@latest/+esm'
 
     hljs.registerLanguage('hcl', hcl);
     hljs.highlightAll();
