@@ -163,6 +163,24 @@ resource "azurerm_resource_group" "rg" {
 }</code>
     </pre>
 
+    <h3># Heredocs</h3>
+
+    <pre data-language="HCL" spellcheck="false" class="text-base">
+        <code class="language-hcl">block {
+  value = &lt;&lt;EOT
+hello
+world
+EOT
+}
+
+block {
+  value = &lt;&lt;-EOT
+    hello
+    world
+  EOT
+}</code>
+    </pre>
+
     <h2>Packer</h2>
 
     <h3># Basic</h3>

@@ -1,4 +1,4 @@
-import type { HLJSApi } from 'highlight.js';
+import type {CallbackResponse, HLJSApi} from 'highlight.js';
 
 export default function (hljs: HLJSApi) {
     // map 'resource' in 'resource "aws_vpc" "main" {'
@@ -30,10 +30,6 @@ export default function (hljs: HLJSApi) {
         match: /(?<match>=>)/,
     };
 
-    const OPERATORS = {
-        scope: 'operator',
-        match: /(?<match>[><+\-*\/]|==|<=|>=|!=)/,
-    };
 
     // 1 or 1.2
     const NUMBERS = {
@@ -56,6 +52,20 @@ export default function (hljs: HLJSApi) {
         ],
     };
 
+    const HEREDOC = {
+        scope: 'string',
+        begin: /<<-?[ \t]*(?<begin>\w+)\n/,
+        end: /[ \t]*(?<end>\w+)\b/,
+        'on:begin': (match: string[], response: CallbackResponse) => {
+            response.data._beginMatch = match[1] || match[2];
+        },
+        'on:end': (match: string[], response: CallbackResponse) => {
+            if (response.data._beginMatch !== match[1]) {
+                response.ignoreMatch();
+            }
+        },
+    };
+
     // somethingLikeThis(
     const FUNCTION = {
         scope: 'title.function',
@@ -74,6 +84,11 @@ export default function (hljs: HLJSApi) {
         match: /(?<match>[{}\[\](),])/,
     };
 
+    const OPERATORS = {
+        scope: 'operator',
+        match: /(?<match>[><+\-*\/]|==|<=|>=|!=)/,
+    };
+
     return {
         case_insensitive: false,
         aliases: ['tf', 'hcl', 'terraform', 'opentofu', 'packer'],
@@ -87,12 +102,13 @@ export default function (hljs: HLJSApi) {
             QUESTION_MARK_IN_EXPRESSION,
             COLON_IN_EXPRESSION,
             ARROW_EXPRESSION,
-            OPERATORS,
             NUMBERS,
             STRINGS,
+            HEREDOC,
             FUNCTION,
             ATTRIBUTE,
             PUNCTUATIONS,
+            OPERATORS,
         ],
     };
 }
