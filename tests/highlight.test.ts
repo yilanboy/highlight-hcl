@@ -80,4 +80,37 @@ describe('highlight hashicorp configuration language', () => {
         expect(result.value)
             .to.contain('<span class="hljs-attr">cidr_block</span>');
     });
+
+    it('should highlight heredoc', () => {
+        const code = `block {
+  value = <<EOT
+hello
+world
+EOT
+}`;
+        const result = hljs.highlightAuto(code, ['hcl']);
+
+        expect(result.value)
+            .to.contain('<span class="hljs-string">&lt;&lt;EOT\n' +
+            'hello\n' +
+            'world\n' +
+            'EOT</span>');
+    });
+
+
+    it('should highlight indented heredoc', () => {
+        const code = `block {
+  value = <<-EOT
+  hello
+    world
+EOT
+}`;
+        const result = hljs.highlightAuto(code, ['hcl']);
+
+        expect(result.value)
+            .to.contain('<span class="hljs-string">&lt;&lt;-EOT\n' +
+            '  hello\n' +
+            '    world\n' +
+            'EOT</span>');
+    });
 });
