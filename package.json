@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "test": "vitest",
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "tsc --watch"
   },
   "repository": {
     "type": "git",
