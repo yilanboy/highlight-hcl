@@ -11,10 +11,10 @@ export default function (hljs: HLJSApi) {
         match: /\b(?<match>\w+)\b(?=(?:\s+".+")*\s*\{)/,
     };
 
-    // for and in
+    // for, in and if
     const FOR_KEYWORD = {
         scope: 'keyword',
-        match: /(?<=\b)(?<match>for|in)(?=\b)/,
+        match: /(?<=\b)(?<match>for|in|if)(?=\b)/,
     };
 
     // the '?' in Conditional Expressions
@@ -124,9 +124,10 @@ export default function (hljs: HLJSApi) {
     // * and /
     // == and !=
     // <= and >=
+    // !
     const OPERATORS = {
         scope: 'operator',
-        match: /(?<match>[><+\-*\/]|<=|>=|==|!=)/,
+        match: /(?<match>[><+\-*\/]|<=|>=|==|!=|!)/,
     };
 
     // aws_instance.main.public_ip
