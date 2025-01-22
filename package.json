@@ -1,6 +1,6 @@
 {
   "name": "highlight-hcl",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A highlight.js plugin for hashicorp configuration language",
   "type": "module",
   "main": "dist/index.js",
@@ -33,7 +33,6 @@
   },
   "homepage": "https://github.com/yilanboy/highlight-hcl#readme",
   "devDependencies": {
-    "@types/node": "^22.10.5",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
   },
